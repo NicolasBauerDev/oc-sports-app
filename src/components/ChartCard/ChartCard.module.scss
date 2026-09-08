@@ -1,0 +1,77 @@
+@use '../../styles/variables' as v;
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: v.$card-padding;
+  border-radius: 5px;
+  // Rogne ce qui dépasse : les graphiques en pleine largeur et
+  // l'assombrissement au survol s'arrêtent au bord de la carte.
+  overflow: hidden;
+}
+
+.light {
+  background-color: v.$grey-light;
+  color: v.$grey-text;
+
+  .title {
+    color: v.$title-dark;
+  }
+}
+
+.red {
+  background-color: v.$red-chart;
+  color: rgba(255, 255, 255, 0.6);
+
+  .title {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.dark {
+  background-color: v.$dark;
+  color: rgba(255, 255, 255, 0.7);
+
+  .title {
+    color: v.$white;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/**
+ * Titre sorti du flux : il n'occupe plus de hauteur, le graphique dispose donc
+ * de toute la carte et reste centré (cas de la carte du score).
+ */
+.floating {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  left: 24px;
+  margin-bottom: 0;
+  z-index: 1;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/** Annule le rembourrage de la carte : le graphique va jusqu'aux bords. */
+.bleed {
+  margin: (-1 * v.$card-padding);
+}
