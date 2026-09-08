@@ -1,0 +1,21 @@
+@use '../../styles/variables' as v;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  // Garantit la lisibilité de la maquette à partir de 1024 x 780 (US#3) :
+  // en dessous, la page défile horizontalement plutôt que de se casser.
+  min-width: v.$min-app-width;
+}
+
+.body {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}

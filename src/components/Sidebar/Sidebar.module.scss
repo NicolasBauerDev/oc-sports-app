@@ -1,0 +1,64 @@
+@use '../../styles/variables' as v;
+
+.sidebar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: v.$sidebar-width;
+  background-color: v.$black;
+
+  @media (max-width: v.$bp-small) {
+    width: 90px;
+  }
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.activity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 6px;
+  background-color: v.$white;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+
+  @media (max-width: v.$bp-small) {
+    width: 54px;
+    height: 54px;
+
+    img {
+      width: 26px;
+      height: 26px;
+    }
+  }
+}
+
+.copyright {
+  position: absolute;
+  bottom: 90px;
+  color: v.$white;
+  font-size: 12px;
+  white-space: nowrap;
+  // Texte lu de bas en haut, comme sur la maquette.
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}

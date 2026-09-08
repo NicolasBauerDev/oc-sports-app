@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router'
+import logo from '../../assets/logo.svg'
 import styles from './Navbar.module.scss'
 
 const links = [
@@ -8,21 +9,24 @@ const links = [
   { name: 'Communauté', path: '/communaute' },
 ]
 
+/**
+ * Navigation horizontale principale (US#1).
+ */
 function Navbar() {
   const navClass = ({ isActive }) =>
     isActive ? `${styles.link} ${styles.active}` : styles.link
 
   return (
     <header className={styles.navbar}>
-      <NavLink to="/">
-        <img className={styles.logo} src="/logo.svg" alt="SportSee" />
+      <NavLink to="/" className={styles.brand}>
+        <img className={styles.logo} src={logo} alt="SportSee, accueil" />
       </NavLink>
 
-      <nav>
+      <nav aria-label="Navigation principale">
         <ul className={styles.links}>
           {links.map((link) => (
             <li key={link.path}>
-              <NavLink to={link.path} className={navClass}>
+              <NavLink to={link.path} className={navClass} end>
                 {link.name}
               </NavLink>
             </li>

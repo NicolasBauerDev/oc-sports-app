@@ -1,0 +1,44 @@
+@use '../../styles/variables' as v;
+
+.chart {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/**
+ * Disque blanc central, posé par-dessus le graphique.
+ *
+ * Sa taille est exprimée en pourcentage de la hauteur : c'est la plus petite
+ * dimension de la carte, donc celle qui détermine le rayon de l'arc. Le disque
+ * reste ainsi à l'intérieur de l'anneau quelle que soit la largeur.
+ */
+.center {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 64%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: v.$white;
+  text-align: center;
+}
+
+.value {
+  color: v.$title-dark;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.label {
+  max-width: 6em;
+  color: v.$grey-text;
+  font-size: 15px;
+  line-height: 1.3;
+}
