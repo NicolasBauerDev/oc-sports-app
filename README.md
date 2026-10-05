@@ -8,12 +8,54 @@ Projet React + Vite, intégration **desktop uniquement** (lisible à partir de
 
 ## Démarrage
 
+Le front se lance seul, sur des données mockées. Le backend n'est nécessaire
+que pour taper sur l'API réelle.
+
+### 1. Le front
+
 ```bash
 npm install
+cp .env.example .env
 npm run dev
 ```
 
-Scripts disponibles :
+L'application est servie sur <http://localhost:5173>.
+
+`.env.example` active les **données mockées** (`VITE_USE_MOCKS=true`) : à ce
+stade le tableau de bord est complet, aucun serveur n'est requis.
+
+> Sans fichier `.env`, l'application tape directement sur
+> `http://localhost:3000` — c'est la valeur de repli, et elle suppose le
+> backend démarré.
+
+### 2. Le backend, pour passer sur l'API réelle
+
+Dépôt séparé fourni par OpenClassrooms. Il utilise **yarn** et écoute sur le
+port **3000**.
+
+```bash
+git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git
+cd P9-front-end-dashboard
+yarn
+yarn dev
+```
+
+Puis, dans le `.env` du front :
+
+```
+VITE_USE_MOCKS=false
+```
+
+et relancer le serveur de développement.
+
+> **Deux utilisateurs existent côté backend : 12 et 18.** Les routes sont donc
+> `/user/12` et `/user/18`. Tout autre identifiant renvoie un 404, que le
+> tableau de bord affiche comme « Utilisateur introuvable ».
+
+Une alternative Docker est documentée dans le README du backend, si yarn n'est
+pas installé.
+
+### Scripts
 
 | Script            | Rôle                                 |
 | ----------------- | ------------------------------------ |
