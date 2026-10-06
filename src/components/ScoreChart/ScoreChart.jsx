@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import {
   PolarAngleAxis,
   RadialBar,
   RadialBarChart,
   ResponsiveContainer,
-} from 'recharts'
-import styles from './ScoreChart.module.scss'
+} from 'recharts';
+import styles from './ScoreChart.module.scss';
 
 /** Rouge de la maquette pour l'arc de progression. */
-const ARC_COLOR = '#ff0000'
+const ARC_COLOR = '#ff0000';
 
 /**
  * Score du jour, sous forme de RadialBarChart (US#14).
@@ -22,7 +22,7 @@ const ARC_COLOR = '#ff0000'
  * @param {number} props.score Score du jour, entre 0 et 1.
  */
 function ScoreChart({ score }) {
-  const percentage = Math.round(score * 100)
+  const percentage = Math.round(score * 100);
 
   return (
     <div className={styles.chart}>
@@ -57,11 +57,11 @@ function ScoreChart({ score }) {
         <p className={styles.label}>de votre objectif</p>
       </div>
     </div>
-  )
+  );
 }
 
 ScoreChart.propTypes = {
   score: PropTypes.number.isRequired,
-}
+};
 
-export default ScoreChart
+export default ScoreChart;

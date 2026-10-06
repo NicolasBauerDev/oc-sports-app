@@ -9,7 +9,7 @@
  * @returns {number}
  */
 function getDayOfMonth(isoDay) {
-  return Number(String(isoDay).split('-')[2])
+  return Number(String(isoDay).split('-')[2]);
 }
 
 /**
@@ -24,13 +24,13 @@ export default class ActivityModel {
    * @param {object} data Objet brut renvoyé par l'API (contenu de `data`).
    */
   constructor(data) {
-    this.userId = data.userId
+    this.userId = data.userId;
 
     this.sessions = (data.sessions ?? []).map((session) => ({
       date: session.day,
       day: getDayOfMonth(session.day),
       kilogram: session.kilogram,
       calories: session.calories,
-    }))
+    }));
   }
 }

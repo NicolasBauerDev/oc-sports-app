@@ -1,20 +1,20 @@
-import PropTypes from 'prop-types'
-import { useParams } from 'react-router'
-import caloriesIcon from '../../assets/energie.svg'
-import carbsIcon from '../../assets/glucide.svg'
-import fatsIcon from '../../assets/lipides.svg'
-import proteinsIcon from '../../assets/proteins.svg'
-import ActivityChart from '../../components/ActivityChart/ActivityChart'
-import ChartCard from '../../components/ChartCard/ChartCard'
-import KeyDataCard from '../../components/KeyDataCard/KeyDataCard'
-import PerformanceChart from '../../components/PerformanceChart/PerformanceChart'
-import ScoreChart from '../../components/ScoreChart/ScoreChart'
-import SessionsChart from '../../components/SessionsChart/SessionsChart'
-import useUserData from '../../hooks/useUserData'
-import styles from './Dashboard.module.scss'
+import PropTypes from 'prop-types';
+import { useParams } from 'react-router';
+import caloriesIcon from '../../assets/energie.svg';
+import carbsIcon from '../../assets/glucide.svg';
+import fatsIcon from '../../assets/lipides.svg';
+import proteinsIcon from '../../assets/proteins.svg';
+import ActivityChart from '../../components/ActivityChart/ActivityChart';
+import ChartCard from '../../components/ChartCard/ChartCard';
+import KeyDataCard from '../../components/KeyDataCard/KeyDataCard';
+import PerformanceChart from '../../components/PerformanceChart/PerformanceChart';
+import ScoreChart from '../../components/ScoreChart/ScoreChart';
+import SessionsChart from '../../components/SessionsChart/SessionsChart';
+import useUserData from '../../hooks/useUserData';
+import styles from './Dashboard.module.scss';
 
 /** Utilisateur affiché sur `/`, en attendant une authentification. */
-const DEFAULT_USER_ID = 12
+const DEFAULT_USER_ID = 12;
 
 /**
  * Construit les 4 cartes de chiffres clés à partir du modèle utilisateur (US#15).
@@ -56,7 +56,7 @@ function buildKeyData(keyData) {
       label: 'Lipides',
       theme: 'fats',
     },
-  ]
+  ];
 }
 
 /**
@@ -70,7 +70,7 @@ function DashboardState({ title, children }) {
       <p className={styles.stateTitle}>{title}</p>
       {children && <p className={styles.state}>{children}</p>}
     </div>
-  )
+  );
 }
 
 /**
@@ -80,11 +80,11 @@ function DashboardState({ title, children }) {
  * (US#11 à US#14) proviennent tous des données normalisées.
  */
 function Dashboard() {
-  const { id } = useParams()
-  const { status, data, error } = useUserData(id ?? DEFAULT_USER_ID)
+  const { id } = useParams();
+  const { status, data, error } = useUserData(id ?? DEFAULT_USER_ID);
 
   if (status === 'loading') {
-    return <DashboardState title="Chargement de vos données…" />
+    return <DashboardState title="Chargement de vos données…" />;
   }
 
   if (status === 'error') {
@@ -92,11 +92,11 @@ function Dashboard() {
       <DashboardState title="Impossible de charger vos données">
         {error.message}
       </DashboardState>
-    )
+    );
   }
 
-  const { user } = data
-  const keyData = buildKeyData(user.keyData)
+  const { user } = data;
+  const keyData = buildKeyData(user.keyData);
 
   return (
     <div className={styles.dashboard}>
@@ -167,12 +167,12 @@ function Dashboard() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 DashboardState.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node,
-}
+};
 
-export default Dashboard
+export default Dashboard;

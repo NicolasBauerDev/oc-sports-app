@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router'
-import Navbar from '../Navbar/Navbar'
-import Sidebar from '../Sidebar/Sidebar'
-import styles from './Layout.module.scss'
+import { Outlet } from 'react-router';
+import Navbar from '../Navbar/Navbar';
+import Sidebar from '../Sidebar/Sidebar';
+import styles from './Layout.module.scss';
 
 /**
  * Structure commune à tous les écrans : navigation horizontale en haut (US#1),
@@ -20,7 +20,7 @@ function Layout() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import styles from './Placeholder.module.scss'
+import PropTypes from 'prop-types';
+import styles from './Placeholder.module.scss';
 
 /**
  * Écran d'attente pour les entrées de menu qui ne sont pas au périmètre du
@@ -15,12 +15,12 @@ function Placeholder({ title, message = 'Cet écran arrive prochainement.' }) {
       <h1 className={styles.title}>{title}</h1>
       <p>{message}</p>
     </div>
-  )
+  );
 }
 
 Placeholder.propTypes = {
   title: PropTypes.string.isRequired,
   message: PropTypes.string,
-}
+};
 
-export default Placeholder
+export default Placeholder;

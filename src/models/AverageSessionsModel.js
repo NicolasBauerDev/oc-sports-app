@@ -1,5 +1,5 @@
 /** Initiales des jours de la semaine, indexées sur `day - 1` (1 = lundi). */
-const DAY_LABELS = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
+const DAY_LABELS = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 
 /**
  * Durée moyenne des sessions, issue de `GET /user/:id/average-sessions`.
@@ -12,12 +12,12 @@ export default class AverageSessionsModel {
    * @param {object} data Objet brut renvoyé par l'API (contenu de `data`).
    */
   constructor(data) {
-    this.userId = data.userId
+    this.userId = data.userId;
 
     this.sessions = (data.sessions ?? []).map((session) => ({
       day: session.day,
       label: DAY_LABELS[session.day - 1] ?? '',
       sessionLength: session.sessionLength,
-    }))
+    }));
   }
 }

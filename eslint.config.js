@@ -1,9 +1,9 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import js from '@eslint/js';
+import globals from 'globals';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -28,6 +28,9 @@ export default defineConfig([
       // est donc confié à ESLint, qui le fait plus tôt — avant même de lancer
       // l'application.
       'react/prop-types': 'error',
+      // Point-virgule obligatoire en fin d'instruction, pour un style
+      // uniforme sur tout le projet.
+      semi: ['error', 'always'],
     },
   },
-])
+]);

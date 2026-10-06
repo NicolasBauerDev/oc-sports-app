@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import styles from './ChartCard.module.scss'
+import PropTypes from 'prop-types';
+import styles from './ChartCard.module.scss';
 
 /**
  * Carte conteneur d'un graphique du tableau de bord.
@@ -32,15 +32,15 @@ function ChartCard({
 }) {
   const classes = [styles.card, styles[variant], className]
     .filter(Boolean)
-    .join(' ')
+    .join(' ');
 
   const headerClasses = [styles.header, floatingTitle && styles.floating]
     .filter(Boolean)
-    .join(' ')
+    .join(' ');
 
   const bodyClasses = [styles.body, bleed && styles.bleed]
     .filter(Boolean)
-    .join(' ')
+    .join(' ');
 
   return (
     <article className={classes}>
@@ -53,7 +53,7 @@ function ChartCard({
 
       <div className={bodyClasses}>{children}</div>
     </article>
-  )
+  );
 }
 
 ChartCard.propTypes = {
@@ -64,6 +64,6 @@ ChartCard.propTypes = {
   floatingTitle: PropTypes.bool,
   bleed: PropTypes.bool,
   children: PropTypes.node.isRequired,
-}
+};
 
-export default ChartCard
+export default ChartCard;

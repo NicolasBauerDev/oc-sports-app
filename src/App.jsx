@@ -1,7 +1,7 @@
-import { BrowserRouter, Route, Routes } from 'react-router'
-import Layout from './components/Layout/Layout'
-import Dashboard from './pages/Dashboard/Dashboard'
-import Placeholder from './pages/Placeholder/Placeholder'
+import { BrowserRouter, Route, Routes } from 'react-router';
+import Layout from './components/Layout/Layout';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Placeholder from './pages/Placeholder/Placeholder';
 
 /**
  * Point d'entrée de l'application : déclare le routeur et les écrans.
@@ -34,7 +34,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

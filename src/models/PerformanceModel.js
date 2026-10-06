@@ -6,7 +6,7 @@ const KIND_LABELS = {
   strength: 'Force',
   speed: 'Vitesse',
   intensity: 'Intensité',
-}
+};
 
 /**
  * Types d'activité, issus de `GET /user/:id/performance`.
@@ -21,16 +21,16 @@ export default class PerformanceModel {
    * @param {object} data Objet brut renvoyé par l'API (contenu de `data`).
    */
   constructor(data) {
-    this.userId = data.userId
+    this.userId = data.userId;
 
     this.data = (data.data ?? []).map((item) => {
-      const kind = data.kind?.[item.kind] ?? ''
+      const kind = data.kind?.[item.kind] ?? '';
 
       return {
         value: item.value,
         kind,
         label: KIND_LABELS[kind] ?? kind,
-      }
-    })
+      };
+    });
   }
 }

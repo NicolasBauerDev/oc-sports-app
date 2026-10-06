@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import styles from './KeyDataCard.module.scss'
+import PropTypes from 'prop-types';
+import styles from './KeyDataCard.module.scss';
 
 /**
  * Carte d'un chiffre clé de la journée : calories, protéines, glucides, lipides
@@ -23,7 +23,7 @@ function KeyDataCard({ icon, value, label, theme }) {
         <p className={styles.label}>{label}</p>
       </div>
     </article>
-  )
+  );
 }
 
 KeyDataCard.propTypes = {
@@ -31,6 +31,6 @@ KeyDataCard.propTypes = {
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   theme: PropTypes.oneOf(['calories', 'proteins', 'carbs', 'fats']).isRequired,
-}
+};
 
-export default KeyDataCard
+export default KeyDataCard;

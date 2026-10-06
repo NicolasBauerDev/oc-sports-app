@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import {
   Bar,
   BarChart,
@@ -7,26 +7,26 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from 'recharts'
-import styles from './ActivityChart.module.scss'
+} from 'recharts';
+import styles from './ActivityChart.module.scss';
 
 /**
  * Couleurs des deux séries. Elles doublent volontairement les variables Sass :
  * Recharts attend des couleurs en JavaScript, et la légende de la carte utilise
  * les mêmes valeurs côté SCSS (`$dark` et `$red-chart`).
  */
-const WEIGHT_COLOR = '#282d30'
-const CALORIES_COLOR = '#ff0000'
+const WEIGHT_COLOR = '#282d30';
+const CALORIES_COLOR = '#ff0000';
 
 /** Épaisseur des barres et écart entre les deux barres d'une même journée. */
-const BAR_SIZE = 7
-const BAR_GAP = 8
+const BAR_SIZE = 7;
+const BAR_GAP = 8;
 
 /** Coins arrondis, en haut uniquement. */
-const BAR_RADIUS = [3, 3, 0, 0]
+const BAR_RADIUS = [3, 3, 0, 0];
 
 /** Nombre de repères sur l'axe des poids, comme sur la maquette. */
-const WEIGHT_TICKS = 3
+const WEIGHT_TICKS = 3;
 
 /**
  * Calcule l'échelle de l'axe des poids : bornes entières et repères
@@ -41,37 +41,37 @@ const WEIGHT_TICKS = 3
  * @returns {{domain: number[], ticks: number[]}}
  */
 function getWeightScale(weights) {
-  const lower = Math.floor(Math.min(...weights)) - 1
-  let upper = Math.ceil(Math.max(...weights)) + 1
+  const lower = Math.floor(Math.min(...weights)) - 1;
+  let upper = Math.ceil(Math.max(...weights)) + 1;
 
-  const intervals = WEIGHT_TICKS - 1
-  const remainder = (upper - lower) % intervals
-  if (remainder !== 0) upper += intervals - remainder
+  const intervals = WEIGHT_TICKS - 1;
+  const remainder = (upper - lower) % intervals;
+  if (remainder !== 0) upper += intervals - remainder;
 
-  const step = (upper - lower) / intervals
-  const ticks = Array.from({ length: WEIGHT_TICKS }, (_, i) => lower + i * step)
+  const step = (upper - lower) / intervals;
+  const ticks = Array.from({ length: WEIGHT_TICKS }, (_, i) => lower + i * step);
 
-  return { domain: [lower, upper], ticks }
+  return { domain: [lower, upper], ticks };
 }
 
 /**
  * Infobulle de la maquette : le poids et les calories empilés, sur fond rouge.
  */
 function ActivityTooltip({ active, payload }) {
-  if (!active || !payload?.length) return null
+  if (!active || !payload?.length) return null;
 
   // On lit la ligne de données d'origine (`payload[0].payload`) plutôt que de
   // chercher chaque série dans le tableau des séries. C'est plus court, et
   // surtout plus sûr : chercher par `dataKey` pouvait tomber sur une autre
   // entrée que celle attendue et afficher la valeur d'un jour voisin.
-  const session = payload[0].payload
+  const session = payload[0].payload;
 
   return (
     <div className={styles.tooltip}>
       <p>{session.kilogram}kg</p>
       <p>{session.calories}Kcal</p>
     </div>
-  )
+  );
 }
 
 /* Les props de l'infobulle sont fournies par Recharts, pas par nous : elles
@@ -87,7 +87,7 @@ ActivityTooltip.propTypes = {
       }),
     }),
   ),
-}
+};
 
 /**
  * Activité quotidienne : poids et calories brûlées (US#11).
@@ -106,7 +106,7 @@ ActivityTooltip.propTypes = {
  *   Sessions déjà normalisées : `day` porte le numéro du jour.
  */
 function ActivityChart({ sessions }) {
-  const weight = getWeightScale(sessions.map((session) => session.kilogram))
+  const weight = getWeightScale(sessions.map((session) => session.kilogram));
 
   return (
     <div className={styles.chart}>
@@ -183,7 +183,7 @@ function ActivityChart({ sessions }) {
         </BarChart>
       </ResponsiveContainer>
     </div>
-  )
+  );
 }
 
 ActivityChart.propTypes = {
@@ -195,6 +195,6 @@ ActivityChart.propTypes = {
       calories: PropTypes.number.isRequired,
     }),
   ).isRequired,
-}
+};
 
-export default ActivityChart
+export default ActivityChart;

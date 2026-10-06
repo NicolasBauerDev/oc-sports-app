@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import {
   Line,
   LineChart,
@@ -7,8 +7,8 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from 'recharts'
-import styles from './SessionsChart.module.scss'
+} from 'recharts';
+import styles from './SessionsChart.module.scss';
 
 /**
  * Débordement vertical de l'assombrissement, en pixels.
@@ -17,10 +17,10 @@ import styles from './SessionsChart.module.scss'
  * (le titre en haut, les jours en bas), le rectangle dépasse volontairement.
  * La carte le rogne grâce à son `overflow: hidden`.
  */
-const OVERSHOOT = 120
+const OVERSHOOT = 120;
 
 /** Marge du tracé : le haut laisse la place au titre, le bas aux jours. */
-const CHART_MARGIN = { top: 76, right: 0, bottom: 20, left: 0 }
+const CHART_MARGIN = { top: 76, right: 0, bottom: 20, left: 0 };
 
 /**
  * Respiration verticale autour de la courbe, en minutes.
@@ -29,7 +29,7 @@ const CHART_MARGIN = { top: 76, right: 0, bottom: 20, left: 0 }
  * zone de tracé et la courbe paraît coupée. Volontairement faible : plus la
  * marge est grande, plus la courbe s'aplatit.
  */
-const Y_PADDING = 10
+const Y_PADDING = 10;
 
 /**
  * Retrait horizontal de la courbe, en pixels.
@@ -38,15 +38,15 @@ const Y_PADDING = 10
  * extrémités, mais suffisamment petit pour que la courbe atteigne presque les
  * bords de la carte comme sur la maquette.
  */
-const X_PADDING = 12
+const X_PADDING = 12;
 
 /**
  * Infobulle de la maquette : la valeur seule, sans libellé ni unité de l'axe.
  */
 function SessionTooltip({ active, payload }) {
-  if (!active || !payload?.length) return null
+  if (!active || !payload?.length) return null;
 
-  return <div className={styles.tooltip}>{payload[0].value} min</div>
+  return <div className={styles.tooltip}>{payload[0].value} min</div>;
 }
 
 /* Props fournies par Recharts : toutes facultatives, le composant gère leur
@@ -54,7 +54,7 @@ function SessionTooltip({ active, payload }) {
 SessionTooltip.propTypes = {
   active: PropTypes.bool,
   payload: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.number })),
-}
+};
 
 /**
  * Assombrit la partie du graphique située à droite du curseur, comme sur la
@@ -66,9 +66,9 @@ SessionTooltip.propTypes = {
  * le rogne.
  */
 function HoverCursor({ points, width, height }) {
-  const x = points?.[0]?.x
+  const x = points?.[0]?.x;
 
-  if (x == null) return null
+  if (x == null) return null;
 
   return (
     <Rectangle
@@ -79,14 +79,14 @@ function HoverCursor({ points, width, height }) {
       fill="#000000"
       opacity={0.1}
     />
-  )
+  );
 }
 
 HoverCursor.propTypes = {
   points: PropTypes.arrayOf(PropTypes.shape({ x: PropTypes.number })),
   width: PropTypes.number,
   height: PropTypes.number,
-}
+};
 
 /**
  * Durée moyenne des sessions, sous forme de LineChart (US#12).
@@ -104,7 +104,7 @@ function SessionsChart({ sessions }) {
   // `day` est unique, et le libellé n'est utilisé que pour l'affichage.
   const labelByDay = new Map(
     sessions.map((session) => [session.day, session.label]),
-  )
+  );
 
   return (
     <div className={styles.chart}>
@@ -166,7 +166,7 @@ function SessionsChart({ sessions }) {
         </LineChart>
       </ResponsiveContainer>
     </div>
-  )
+  );
 }
 
 SessionsChart.propTypes = {
@@ -177,6 +177,6 @@ SessionsChart.propTypes = {
       sessionLength: PropTypes.number.isRequired,
     }),
   ).isRequired,
-}
+};
 
-export default SessionsChart
+export default SessionsChart;

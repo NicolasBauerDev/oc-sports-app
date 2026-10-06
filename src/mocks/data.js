@@ -32,7 +32,7 @@ export const USER_MAIN_DATA = [
       lipidCount: 120,
     },
   },
-]
+];
 
 export const USER_ACTIVITY = [
   {
@@ -59,7 +59,7 @@ export const USER_ACTIVITY = [
       { day: '2020-07-07', kilogram: 69, calories: 390 },
     ],
   },
-]
+];
 
 export const USER_AVERAGE_SESSIONS = [
   {
@@ -86,7 +86,7 @@ export const USER_AVERAGE_SESSIONS = [
       { day: 7, sessionLength: 50 },
     ],
   },
-]
+];
 
 export const USER_PERFORMANCE = [
   {
@@ -127,4 +127,4 @@ export const USER_PERFORMANCE = [
       { value: 110, kind: 6 },
     ],
   },
-]
+];

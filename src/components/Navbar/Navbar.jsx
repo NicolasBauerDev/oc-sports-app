@@ -1,20 +1,20 @@
-import { NavLink } from 'react-router'
-import logo from '../../assets/logo.svg'
-import styles from './Navbar.module.scss'
+import { NavLink } from 'react-router';
+import logo from '../../assets/logo.svg';
+import styles from './Navbar.module.scss';
 
 const links = [
   { name: 'Accueil', path: '/' },
   { name: 'Profil', path: '/profil' },
   { name: 'Réglage', path: '/reglage' },
   { name: 'Communauté', path: '/communaute' },
-]
+];
 
 /**
  * Navigation horizontale principale (US#1).
  */
 function Navbar() {
   const navClass = ({ isActive }) =>
-    isActive ? `${styles.link} ${styles.active}` : styles.link
+    isActive ? `${styles.link} ${styles.active}` : styles.link;
 
   return (
     <header className={styles.navbar}>
@@ -34,7 +34,7 @@ function Navbar() {
         </ul>
       </nav>
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

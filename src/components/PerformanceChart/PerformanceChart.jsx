@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -6,11 +6,11 @@ import {
   Radar,
   RadarChart,
   ResponsiveContainer,
-} from 'recharts'
-import styles from './PerformanceChart.module.scss'
+} from 'recharts';
+import styles from './PerformanceChart.module.scss';
 
 /** Rouge de la maquette pour la surface du radar. */
-const RADAR_COLOR = '#ff0101'
+const RADAR_COLOR = '#ff0101';
 
 /**
  * Marge au-delà de la plus grande valeur.
@@ -18,7 +18,7 @@ const RADAR_COLOR = '#ff0101'
  * Sans elle, le plus grand axe touche l'hexagone extérieur et la forme paraît
  * à l'étroit. La maquette laisse cette respiration.
  */
-const HEADROOM = 1.25
+const HEADROOM = 1.25;
 
 /**
  * Place réservée aux libellés des axes, en pixels.
@@ -27,7 +27,7 @@ const HEADROOM = 1.25
  * qui dépasse de sa propre boîte. Sans ces marges, « Cardio » et « Vitesse »
  * se retrouvaient tronqués sur les écrans étroits.
  */
-const LABEL_MARGIN = { top: 10, right: 28, bottom: 10, left: 28 }
+const LABEL_MARGIN = { top: 10, right: 28, bottom: 10, left: 28 };
 
 /**
  * Nombre de repères de l'axe radial.
@@ -36,7 +36,7 @@ const LABEL_MARGIN = { top: 10, right: 28, bottom: 10, left: 28 }
  * donc en demander un de plus que le nombre d'anneaux voulus. 6 repères pour
  * les 5 hexagones de la maquette.
  */
-const RING_COUNT = 6
+const RING_COUNT = 6;
 
 /**
  * Types d'activité, sous forme de RadarChart (US#13).
@@ -53,9 +53,9 @@ function PerformanceChart({ performance }) {
   //
   // L'inversion est faite ici et non dans le modèle : l'ordre des axes est un
   // choix d'affichage, pas une propriété de la donnée.
-  const axes = [...performance].reverse()
+  const axes = [...performance].reverse();
 
-  const maxValue = Math.max(...axes.map((axis) => axis.value), 0)
+  const maxValue = Math.max(...axes.map((axis) => axis.value), 0);
 
   return (
     <div className={styles.chart}>
@@ -94,7 +94,7 @@ function PerformanceChart({ performance }) {
         </RadarChart>
       </ResponsiveContainer>
     </div>
-  )
+  );
 }
 
 PerformanceChart.propTypes = {
@@ -105,6 +105,6 @@ PerformanceChart.propTypes = {
       label: PropTypes.string.isRequired,
     }),
   ).isRequired,
-}
+};
 
-export default PerformanceChart
+export default PerformanceChart;

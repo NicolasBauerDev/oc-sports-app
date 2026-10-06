@@ -3,14 +3,14 @@ import {
   fetchMockUserActivity,
   fetchMockUserAverageSessions,
   fetchMockUserPerformance,
-} from '../mocks/mockApi.js'
+} from '../mocks/mockApi.js';
 import {
   ActivityModel,
   AverageSessionsModel,
   PerformanceModel,
   UserModel,
-} from '../models/index.js'
-import { getResource } from './api.js'
+} from '../models/index.js';
+import { getResource } from './api.js';
 
 /**
  * Seul point d'entrée aux données pour l'application.
@@ -26,8 +26,8 @@ import { getResource } from './api.js'
  * @returns {Promise<UserModel>}
  */
 export async function getUser(userId) {
-  const raw = await getResource(`/user/${userId}`, () => fetchMockUser(userId))
-  return new UserModel(raw)
+  const raw = await getResource(`/user/${userId}`, () => fetchMockUser(userId));
+  return new UserModel(raw);
 }
 
 /**
@@ -39,8 +39,8 @@ export async function getUser(userId) {
 export async function getUserActivity(userId) {
   const raw = await getResource(`/user/${userId}/activity`, () =>
     fetchMockUserActivity(userId),
-  )
-  return new ActivityModel(raw)
+  );
+  return new ActivityModel(raw);
 }
 
 /**
@@ -52,8 +52,8 @@ export async function getUserActivity(userId) {
 export async function getUserAverageSessions(userId) {
   const raw = await getResource(`/user/${userId}/average-sessions`, () =>
     fetchMockUserAverageSessions(userId),
-  )
-  return new AverageSessionsModel(raw)
+  );
+  return new AverageSessionsModel(raw);
 }
 
 /**
@@ -65,6 +65,6 @@ export async function getUserAverageSessions(userId) {
 export async function getUserPerformance(userId) {
   const raw = await getResource(`/user/${userId}/performance`, () =>
     fetchMockUserPerformance(userId),
-  )
-  return new PerformanceModel(raw)
+  );
+  return new PerformanceModel(raw);
 }
