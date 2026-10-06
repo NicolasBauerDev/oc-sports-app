@@ -8,19 +8,19 @@ import styles from './Layout.module.scss';
  * navigation verticale à gauche (US#2) et zone de contenu à droite.
  */
 function Layout() {
-  return (
-    <div className={styles.layout}>
-      <Navbar />
+    return (
+        <div className={styles.layout}>
+            <Navbar />
 
-      <div className={styles.body}>
-        <Sidebar />
+            <div className={styles.body}>
+                <Sidebar />
 
-        <main className={styles.main}>
-          <Outlet />
-        </main>
-      </div>
-    </div>
-  );
+                <main className={styles.main}>
+                    <Outlet />
+                </main>
+            </div>
+        </div>
+    );
 }
 
 export default Layout;

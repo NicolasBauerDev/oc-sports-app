@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import {
-  PolarAngleAxis,
-  PolarGrid,
-  PolarRadiusAxis,
-  Radar,
-  RadarChart,
-  ResponsiveContainer,
+    PolarAngleAxis,
+    PolarGrid,
+    PolarRadiusAxis,
+    Radar,
+    RadarChart,
+    ResponsiveContainer,
 } from 'recharts';
 import styles from './PerformanceChart.module.scss';
 
@@ -46,65 +46,65 @@ const RING_COUNT = 6;
  *   Données déjà normalisées : `label` porte le libellé français de l'axe.
  */
 function PerformanceChart({ performance }) {
-  // La maquette place Intensité en haut puis, dans le sens horaire, Vitesse,
-  // Force, Endurance, Energie, Cardio — soit l'ordre inverse de celui de
-  // l'API, qui va de cardio (1) à intensity (6). Recharts plaçant le premier
-  // élément en haut et tournant dans le sens horaire, inverser suffit.
-  //
-  // L'inversion est faite ici et non dans le modèle : l'ordre des axes est un
-  // choix d'affichage, pas une propriété de la donnée.
-  const axes = [...performance].reverse();
+    // La maquette place Intensité en haut puis, dans le sens horaire, Vitesse,
+    // Force, Endurance, Energie, Cardio — soit l'ordre inverse de celui de
+    // l'API, qui va de cardio (1) à intensity (6). Recharts plaçant le premier
+    // élément en haut et tournant dans le sens horaire, inverser suffit.
+    //
+    // L'inversion est faite ici et non dans le modèle : l'ordre des axes est un
+    // choix d'affichage, pas une propriété de la donnée.
+    const axes = [...performance].reverse();
 
-  const maxValue = Math.max(...axes.map((axis) => axis.value), 0);
+    const maxValue = Math.max(...axes.map((axis) => axis.value), 0);
 
-  return (
-    <div className={styles.chart}>
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={axes} outerRadius="72%" margin={LABEL_MARGIN}>
-          {/* La maquette ne montre que les hexagones, sans rayons. */}
-          <PolarGrid radialLines={false} stroke="#ffffff" strokeOpacity={0.5} />
+    return (
+        <div className={styles.chart}>
+            <ResponsiveContainer width="100%" height="100%">
+                <RadarChart data={axes} outerRadius="72%" margin={LABEL_MARGIN}>
+                    {/* La maquette ne montre que les hexagones, sans rayons. */}
+                    <PolarGrid radialLines={false} stroke="#ffffff" strokeOpacity={0.5} />
 
-          <PolarAngleAxis
-            dataKey="label"
-            tickLine={false}
-            tick={{ fill: '#ffffff', fontSize: 12 }}
-          />
+                    <PolarAngleAxis
+                        dataKey="label"
+                        tickLine={false}
+                        tick={{ fill: '#ffffff', fontSize: 12 }}
+                    />
 
-          {/* Axe radial masqué : il ne sert qu'à fixer l'échelle et le
+                    {/* Axe radial masqué : il ne sert qu'à fixer l'échelle et le
               nombre d'hexagones. */}
-          <PolarRadiusAxis
-            tick={false}
-            axisLine={false}
-            tickCount={RING_COUNT}
-            domain={[0, maxValue * HEADROOM || 1]}
-          />
+                    <PolarRadiusAxis
+                        tick={false}
+                        axisLine={false}
+                        tickCount={RING_COUNT}
+                        domain={[0, maxValue * HEADROOM || 1]}
+                    />
 
-          {/* Animation désactivée : Recharts fait grandir la surface depuis
+                    {/* Animation désactivée : Recharts fait grandir la surface depuis
               le centre, et l'état final n'est atteint qu'à la fin de
               l'animation. Si celle-ci n'aboutit pas (onglet en arrière-plan,
               image perdue, animations réduites), la carte reste vide. La
               maquette est statique de toute façon. */}
-          <Radar
-            dataKey="value"
-            fill={RADAR_COLOR}
-            fillOpacity={0.7}
-            stroke="none"
-            isAnimationActive={false}
-          />
-        </RadarChart>
-      </ResponsiveContainer>
-    </div>
-  );
+                    <Radar
+                        dataKey="value"
+                        fill={RADAR_COLOR}
+                        fillOpacity={0.7}
+                        stroke="none"
+                        isAnimationActive={false}
+                    />
+                </RadarChart>
+            </ResponsiveContainer>
+        </div>
+    );
 }
 
 PerformanceChart.propTypes = {
-  performance: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.number.isRequired,
-      kind: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+    performance: PropTypes.arrayOf(
+        PropTypes.shape({
+            value: PropTypes.number.isRequired,
+            kind: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+        }),
+    ).isRequired,
 };
 
 export default PerformanceChart;

@@ -10,31 +10,31 @@ import Placeholder from './pages/Placeholder/Placeholder';
  * le même tableau de bord, mais alimenté par les données de l'utilisateur ciblé.
  */
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="/user/:id" element={<Dashboard />} />
-          <Route path="/profil" element={<Placeholder title="Profil" />} />
-          <Route path="/reglage" element={<Placeholder title="Réglage" />} />
-          <Route
-            path="/communaute"
-            element={<Placeholder title="Communauté" />}
-          />
-          <Route
-            path="*"
-            element={
-              <Placeholder
-                title="Page introuvable"
-                message="Cette page n'existe pas ou a été déplacée."
-              />
-            }
-          />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route element={<Layout />}>
+                    <Route index element={<Dashboard />} />
+                    <Route path="/user/:id" element={<Dashboard />} />
+                    <Route path="/profil" element={<Placeholder title="Profil" />} />
+                    <Route path="/reglage" element={<Placeholder title="Réglage" />} />
+                    <Route
+                        path="/communaute"
+                        element={<Placeholder title="Communauté" />}
+                    />
+                    <Route
+                        path="*"
+                        element={
+                            <Placeholder
+                                title="Page introuvable"
+                                message="Cette page n'existe pas ou a été déplacée."
+                            />
+                        }
+                    />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

@@ -10,17 +10,17 @@ import styles from './Placeholder.module.scss';
  * @param {string} [props.message] Message affiché sous le titre.
  */
 function Placeholder({ title, message = 'Cet écran arrive prochainement.' }) {
-  return (
-    <div className={styles.placeholder}>
-      <h1 className={styles.title}>{title}</h1>
-      <p>{message}</p>
-    </div>
-  );
+    return (
+        <div className={styles.placeholder}>
+            <h1 className={styles.title}>{title}</h1>
+            <p>{message}</p>
+        </div>
+    );
 }
 
 Placeholder.propTypes = {
-  title: PropTypes.string.isRequired,
-  message: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    message: PropTypes.string,
 };
 
 export default Placeholder;

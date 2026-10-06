@@ -1,8 +1,8 @@
 import {
-  USER_ACTIVITY,
-  USER_AVERAGE_SESSIONS,
-  USER_MAIN_DATA,
-  USER_PERFORMANCE,
+    USER_ACTIVITY,
+    USER_AVERAGE_SESSIONS,
+    USER_MAIN_DATA,
+    USER_PERFORMANCE,
 } from './data.js';
 
 /**
@@ -19,31 +19,31 @@ import {
  * @returns {Promise<{data: object}>}
  */
 async function respond(collection, idKey, userId) {
-  const found = collection.find((entry) => entry[idKey] === userId);
+    const found = collection.find((entry) => entry[idKey] === userId);
 
-  if (!found) {
-    throw new Error(`Utilisateur ${userId} introuvable`);
-  }
+    if (!found) {
+        throw new Error(`Utilisateur ${userId} introuvable`);
+    }
 
-  return { data: found };
+    return { data: found };
 }
 
 /** Imite `GET /user/:id`. */
 export function fetchMockUser(userId) {
-  return respond(USER_MAIN_DATA, 'id', userId);
+    return respond(USER_MAIN_DATA, 'id', userId);
 }
 
 /** Imite `GET /user/:id/activity`. */
 export function fetchMockUserActivity(userId) {
-  return respond(USER_ACTIVITY, 'userId', userId);
+    return respond(USER_ACTIVITY, 'userId', userId);
 }
 
 /** Imite `GET /user/:id/average-sessions`. */
 export function fetchMockUserAverageSessions(userId) {
-  return respond(USER_AVERAGE_SESSIONS, 'userId', userId);
+    return respond(USER_AVERAGE_SESSIONS, 'userId', userId);
 }
 
 /** Imite `GET /user/:id/performance`. */
 export function fetchMockUserPerformance(userId) {
-  return respond(USER_PERFORMANCE, 'userId', userId);
+    return respond(USER_PERFORMANCE, 'userId', userId);
 }

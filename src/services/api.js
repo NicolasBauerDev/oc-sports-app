@@ -14,16 +14,16 @@ export const dataSource = USE_MOCKS ? 'mocks' : API_URL;
  * serveur éteint (`status` à `null`).
  */
 export class ApiError extends Error {
-  /**
+    /**
    * @param {string} message
    * @param {number|null} status Statut HTTP, ou `null` en cas de panne réseau.
    * @param {object} [options] Options d'`Error` (notamment `cause`).
    */
-  constructor(message, status, options) {
-    super(message, options);
-    this.name = 'ApiError';
-    this.status = status;
-  }
+    constructor(message, status, options) {
+        super(message, options);
+        this.name = 'ApiError';
+        this.status = status;
+    }
 }
 
 /**
@@ -34,38 +34,38 @@ export class ApiError extends Error {
  * @throws {ApiError}
  */
 async function request(endpoint) {
-  let response;
+    let response;
 
-  try {
-    response = await fetch(`${API_URL}${endpoint}`);
-  } catch (cause) {
+    try {
+        response = await fetch(`${API_URL}${endpoint}`);
+    } catch (cause) {
     // `fetch` ne rejette que sur une panne réseau : backend éteint, DNS, CORS.
-    throw new ApiError(
-      `Serveur injoignable sur ${API_URL}. Le backend est-il démarré ?`,
-      null,
-      { cause },
-    );
-  }
+        throw new ApiError(
+            `Serveur injoignable sur ${API_URL}. Le backend est-il démarré ?`,
+            null,
+            { cause },
+        );
+    }
 
-  if (!response.ok) {
-    throw new ApiError(
-      response.status === 404
-        ? `Utilisateur introuvable (${endpoint})`
-        : `Le serveur a répondu ${response.status} (${endpoint})`,
-      response.status,
-    );
-  }
+    if (!response.ok) {
+        throw new ApiError(
+            response.status === 404
+                ? `Utilisateur introuvable (${endpoint})`
+                : `Le serveur a répondu ${response.status} (${endpoint})`,
+            response.status,
+        );
+    }
 
-  const body = await response.json();
+    const body = await response.json();
 
-  if (body?.data === undefined) {
-    throw new ApiError(
-      `Réponse inattendue sur ${endpoint} : la propriété \`data\` est absente`,
-      response.status,
-    );
-  }
+    if (body?.data === undefined) {
+        throw new ApiError(
+            `Réponse inattendue sur ${endpoint} : la propriété \`data\` est absente`,
+            response.status,
+        );
+    }
 
-  return body.data;
+    return body.data;
 }
 
 /**
@@ -78,10 +78,10 @@ async function request(endpoint) {
  * @returns {Promise<object>}
  */
 export async function getResource(endpoint, mockFetcher) {
-  if (USE_MOCKS) {
-    const { data } = await mockFetcher();
-    return data;
-  }
+    if (USE_MOCKS) {
+        const { data } = await mockFetcher();
+        return data;
+    }
 
-  return request(endpoint);
+    return request(endpoint);
 }
