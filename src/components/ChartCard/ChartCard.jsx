@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import styles from './ChartCard.module.scss'
+import PropTypes from 'prop-types';
+import styles from './ChartCard.module.scss';
 
 /**
  * Carte conteneur d'un graphique du tableau de bord.
@@ -22,48 +22,48 @@ import styles from './ChartCard.module.scss'
  * @param {React.ReactNode} props.children Contenu de la carte (le graphique).
  */
 function ChartCard({
-  title,
-  variant = 'light',
-  aside,
-  className,
-  floatingTitle = false,
-  bleed = false,
-  children,
+    title,
+    variant = 'light',
+    aside,
+    className,
+    floatingTitle = false,
+    bleed = false,
+    children,
 }) {
-  const classes = [styles.card, styles[variant], className]
-    .filter(Boolean)
-    .join(' ')
+    const classes = [styles.card, styles[variant], className]
+        .filter(Boolean)
+        .join(' ');
 
-  const headerClasses = [styles.header, floatingTitle && styles.floating]
-    .filter(Boolean)
-    .join(' ')
+    const headerClasses = [styles.header, floatingTitle && styles.floating]
+        .filter(Boolean)
+        .join(' ');
 
-  const bodyClasses = [styles.body, bleed && styles.bleed]
-    .filter(Boolean)
-    .join(' ')
+    const bodyClasses = [styles.body, bleed && styles.bleed]
+        .filter(Boolean)
+        .join(' ');
 
-  return (
-    <article className={classes}>
-      {(title || aside) && (
-        <header className={headerClasses}>
-          {title && <h2 className={styles.title}>{title}</h2>}
-          {aside}
-        </header>
-      )}
+    return (
+        <article className={classes}>
+            {(title || aside) && (
+                <header className={headerClasses}>
+                    {title && <h2 className={styles.title}>{title}</h2>}
+                    {aside}
+                </header>
+            )}
 
-      <div className={bodyClasses}>{children}</div>
-    </article>
-  )
+            <div className={bodyClasses}>{children}</div>
+        </article>
+    );
 }
 
 ChartCard.propTypes = {
-  title: PropTypes.string,
-  variant: PropTypes.oneOf(['light', 'red', 'dark']),
-  aside: PropTypes.node,
-  className: PropTypes.string,
-  floatingTitle: PropTypes.bool,
-  bleed: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-}
+    title: PropTypes.string,
+    variant: PropTypes.oneOf(['light', 'red', 'dark']),
+    aside: PropTypes.node,
+    className: PropTypes.string,
+    floatingTitle: PropTypes.bool,
+    bleed: PropTypes.bool,
+    children: PropTypes.node.isRequired,
+};
 
-export default ChartCard
+export default ChartCard;

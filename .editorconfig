@@ -1,0 +1,6 @@
+root = true
+
+# Aligné sur les règles ESLint (@stylistic/indent).
+[*.{js,jsx}]
+indent_style = space
+indent_size = 4
