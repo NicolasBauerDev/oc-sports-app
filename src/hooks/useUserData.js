@@ -10,9 +10,9 @@ import {
  * Charge l'ensemble des données d'un utilisateur et suit l'état du chargement.
  *
  * Les quatre ressources sont demandées en parallèle et livrées ensemble : le
- * tableau de bord n'a de sens qu'au complet, on évite donc de l'afficher par
+ * tableau de bord n'a de sens qu'une fois chargée complètement, on évite donc de l'afficher par
  * morceaux. La contrepartie assumée est qu'une seule ressource en échec fait
- * échouer la page entière.
+ * échouer l'affichage de la page entière.
  *
  * L'état est regroupé dans un seul objet plutôt que dans trois `useState`
  * séparés : impossible de se retrouver avec un chargement terminé et des

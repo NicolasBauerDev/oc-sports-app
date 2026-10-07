@@ -19,7 +19,7 @@ const activities = [
 function Sidebar() {
     return (
         <div className={styles.sidebar}>
-            <nav aria-label="Navigation des activités">
+            <nav className={styles.nav} aria-label="Navigation des activités">
                 <ul className={styles.activities}>
                     {activities.map((activity) => (
                         <li key={activity.id}>
