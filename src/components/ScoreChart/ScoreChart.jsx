@@ -18,6 +18,9 @@ const ARC_COLOR = '#ff0000';
  * convertie en degrés à la main : la valeur reste une donnée, c'est Recharts qui
  * la traduit en angle.
  *
+ * Le disque blanc central reprend `innerRadius` dans ScoreChart.module.scss :
+ * changer l'un impose de changer l'autre.
+ *
  * @param {object} props
  * @param {number} props.score Score du jour, entre 0 et 1.
  */
