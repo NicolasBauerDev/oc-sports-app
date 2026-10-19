@@ -1,0 +1,51 @@
+@use '../../styles/variables' as v;
+
+.chart {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  // Permet à `.center` de se mesurer sur cette zone (unités `cqw` / `cqh`).
+  container-type: size;
+}
+
+/**
+ * Diamètre du disque blanc, calculé comme Recharts calcule l'anneau.
+ *
+ * Recharts part de la plus petite dimension du graphique, moins sa marge de
+ * 5 px de chaque côté, et l'anneau commence à `innerRadius="70%"` de ce rayon
+ * (voir ScoreChart.jsx). Avec le même calcul, le disque s'arrête au bord
+ * intérieur de l'anneau, que la carte soit plus large que haute ou l'inverse.
+ * Les deux 70 % doivent rester identiques.
+ */
+$disc-size: calc((min(100cqw, 100cqh) - 10px) * 0.7);
+
+/** Disque blanc central, posé par-dessus le graphique. */
+.center {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: $disc-size;
+  height: $disc-size;
+  border-radius: 50%;
+  background-color: v.$white;
+  text-align: center;
+}
+
+.value {
+  color: v.$title-dark;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.label {
+  max-width: 6em;
+  color: v.$grey-text;
+  font-size: 15px;
+  line-height: 1.3;
+}

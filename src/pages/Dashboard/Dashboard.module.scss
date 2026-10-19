@@ -1,0 +1,135 @@
+@use '../../styles/variables' as v;
+
+.dashboard {
+  padding: 68px 90px 60px 107px;
+
+  @media (max-width: v.$bp-large) {
+    padding: 48px 48px 48px 56px;
+  }
+
+  @media (max-width: v.$bp-small) {
+    padding: 32px 24px 32px 32px;
+  }
+}
+
+.stateTitle {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.state {
+  margin-top: 12px;
+  color: v.$grey-text;
+  font-size: 16px;
+}
+
+.greeting {
+  font-size: 48px;
+  font-weight: 500;
+
+  @media (max-width: v.$bp-small) {
+    font-size: 36px;
+  }
+}
+
+.firstName {
+  color: v.$red;
+}
+
+.encouragement {
+  margin-top: 41px;
+  font-size: 18px;
+
+  @media (max-width: v.$bp-small) {
+    margin-top: 24px;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) v.$key-card-width;
+  gap: 32px;
+  margin-top: 77px;
+
+  @media (max-width: v.$bp-large) {
+    margin-top: 48px;
+  }
+
+  @media (max-width: v.$bp-small) {
+    grid-template-columns: minmax(0, 1fr) 200px;
+    gap: 24px;
+    margin-top: 32px;
+  }
+}
+
+.charts {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.chartsRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+
+  @media (max-width: v.$bp-small) {
+    gap: 20px;
+  }
+}
+
+.dailyActivity {
+  height: 320px;
+
+  @media (max-width: v.$bp-small) {
+    height: 280px;
+  }
+}
+
+.smallChart {
+  height: 263px;
+
+  @media (max-width: v.$bp-small) {
+    height: 230px;
+  }
+}
+
+.keyData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-size: 14px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: v.$bp-small) {
+    gap: 20px;
+    font-size: 13px;
+  }
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dotWeight {
+  background-color: v.$dark;
+}
+
+.dotCalories {
+  background-color: v.$red-chart;
+}

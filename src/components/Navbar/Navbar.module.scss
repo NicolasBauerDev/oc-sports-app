@@ -1,0 +1,46 @@
+@use '../../styles/variables' as v;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  height: v.$navbar-height;
+  padding: 0 90px;
+  background-color: v.$black;
+
+  @media (max-width: v.$bp-small) {
+    padding: 0 40px;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo {
+  height: 61px;
+  width: auto;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 6vw, 100px);
+}
+
+.link {
+  color: v.$white;
+  font-size: 24px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+
+  &:hover,
+  &.active {
+    color: v.$red;
+  }
+}

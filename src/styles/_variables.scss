@@ -1,0 +1,28 @@
+// Palette issue de la maquette Figma
+$black: #020203;
+$dark: #282d30;
+$red: #ff0101;
+$red-chart: #ff0000;
+$white: #ffffff;
+$grey-light: #fbfbfb;
+$grey-text: #74798c;
+$title-dark: #20253a;
+
+// Couleurs des chiffres clés (fonds des icônes)
+$calories: #ff0000;
+$proteins: #4ab8ff;
+$carbs: #fdcc0c;
+$fats: #fd5181;
+
+// Dimensions de la mise en page
+$navbar-height: 91px;
+$sidebar-width: 117px;
+$key-card-width: 258px;
+$card-padding: 24px;
+
+// Résolution minimale supportée (US#3)
+$min-app-width: 1024px;
+
+// Points de rupture desktop (le mobile / tablette sera traité plus tard)
+$bp-large: 1440px;
+$bp-small: 1200px;

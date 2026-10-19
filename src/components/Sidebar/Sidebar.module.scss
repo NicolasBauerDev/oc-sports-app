@@ -1,0 +1,77 @@
+@use '../../styles/variables' as v;
+
+// Les icônes sont encadrées par deux zones qui se partagent la hauteur à parts
+// égales : la cale vide du haut (::before) et le copyright en bas. Le copyright
+// ne descend jamais sous la hauteur de son texte ; quand la place manque, c'est
+// la cale qui cède et les icônes remontent au lieu de passer sous le texte.
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: v.$sidebar-width;
+  background-color: v.$black;
+
+  &::before {
+    content: '';
+    flex: 1 1 0;
+    // Pendant de la marge basse du copyright, pour garder les icônes centrées.
+    margin-top: 90px;
+  }
+
+  @media (max-width: v.$bp-small) {
+    width: 90px;
+  }
+}
+
+.nav {
+  margin: 24px 0;
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.activity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 6px;
+  background-color: v.$white;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+
+  @media (max-width: v.$bp-small) {
+    width: 54px;
+    height: 54px;
+
+    img {
+      width: 26px;
+      height: 26px;
+    }
+  }
+}
+
+.copyright {
+  flex: 1 1 0;
+  margin-bottom: 90px;
+  color: v.$white;
+  font-size: 12px;
+  white-space: nowrap;
+  // Texte lu de bas en haut, comme sur la maquette.
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}

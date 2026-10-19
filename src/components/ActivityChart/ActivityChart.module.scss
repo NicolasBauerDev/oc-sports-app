@@ -1,0 +1,20 @@
+@use '../../styles/variables' as v;
+
+.chart {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+.tooltip {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px 8px;
+  background-color: v.$red-chart;
+  color: v.$white;
+  font-size: 10px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
